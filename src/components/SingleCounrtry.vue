@@ -1,10 +1,11 @@
 <template>
-  <AppNav />
-  <router-view></router-view>
+    <h2>
+        Single country
+    </h2>
 </template>
 
 <script setup lang="ts">
-import AppNav from './components/AppNav.vue';
+
 </script>
 
 <style scoped lang="css"></style>
