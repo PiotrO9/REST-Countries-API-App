@@ -7,4 +7,9 @@
 import AppNav from './components/AppNav.vue';
 </script>
 
-<style scoped lang="css"></style>
+<style scoped lang="css">
+[data-theme='dark'] {
+  background-color: #333;
+  color: #fff;
+}
+</style>
