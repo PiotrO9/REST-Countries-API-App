@@ -4,9 +4,9 @@
             Where in the world?
         </span>
 
-        <div class="theme-switcher">
+        <div class="theme-switcher" @click="switchTheme">
             <div class="icon-container">
-                <img v-if="isDarkTheme" src="../../public/assets/light-moon.svg" class="icon" alt="Moon icon">
+                <img v-if="isDark" src="../../public/assets/light-moon.svg" class="icon" alt="Moon icon">
                 <img v-else src="../../public/assets/dark-moon.svg" class="icon" alt="Moon icon">
             </div>
             <div class="current-mode">
@@ -26,9 +26,11 @@ const themeName = computed(() => {
     return (themeStore.$state.isDark ? 'Dark' : 'Light') + " mode";
 })
 
-const isDarkTheme = computed(() => {
-    return themeStore.$state.isDark;
-})
+const isDark = computed(() => { return themeStore.$state.isDark })
+
+const switchTheme = (): void => {
+    themeStore.toggleTheme();
+}
 
 </script>
 
@@ -38,9 +40,11 @@ const isDarkTheme = computed(() => {
     padding: 10px;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--dark-blue);
-
-
+    background-color: var(--background-color);
+    color: var(--text-color);
+    -webkit-box-shadow: 1px 42px 33px -26px var(--box-shadow-color);
+    -moz-box-shadow: 1px 42px 33px -26px var(--box-shadow-color);
+    box-shadow: 0px 22px 33px -10px var(--box-shadow-color);
 }
 
 .heading-text {
@@ -55,6 +59,7 @@ const isDarkTheme = computed(() => {
     display: flex;
     justify-content: space-between;
     align-content: center;
+    cursor: pointer;
 
     @media (min-width: 768px) {
         font-size: 18px;

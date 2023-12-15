@@ -20,10 +20,15 @@
 }
 
 [data-theme='dark'] {
-  --background-color: var(--very-dark-blue-bg);
+  --background-color: var(--dark-blue);
   --text-color: var(--white);
-  --element-color: var(--dark-blue);
-  --input-color: var(--dark-gray);
+  --second-background-color: var(--very-dark-blue-bg);
+}
+
+[data-theme='light'] {
+  --background-color: var(--white);
+  --text-color: var(--dark-blue);
+  --second-background-color: var(--very-light-gray);
 }
 
 * {
