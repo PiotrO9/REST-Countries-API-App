@@ -1,0 +1,2 @@
+type countryData = {};
+type countryShortData = {};
