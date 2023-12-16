@@ -44,4 +44,10 @@ html, body, #app {
   height: 100vh;
   background-color: var(--background-color);
   color: var(--text-color);
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }

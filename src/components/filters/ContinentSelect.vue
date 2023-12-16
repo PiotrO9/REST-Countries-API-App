@@ -12,25 +12,39 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const continents = ["Africa", "America", "Asia", "Europe", "Oceania"];
-const selectedContinent = ref('');
+const continents: string[] = ["Africa", "America", "Asia", "Europe", "Oceania"];
+const selectedContinent = ref<string>('');
 
-function selectContinent(continent) {
+function selectContinent(continent: string) {
     selectedContinent.value = continent;
 }
 </script>
   
 <style scoped>
 .dropbtn {
-    background-color: #f1f1f1;
-    color: black;
-    padding: 16px;
-    font-size: 16px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-weight: 600;
+    padding: 16px 24px;
     border: none;
+    outline: none;
     cursor: pointer;
-    width: 100%;
+    width: 152px;
+    max-width: 200px;
     text-align: left;
-    border-bottom: 1px solid #ccc;
+    border-radius: 6px;
+    border-bottom-right-radius: 6px;
+    box-sizing: content-box;
+}
+
+.dropbtn::after {
+    content: '';
+    position: absolute;
+    background-color: var(--second-background-color);
+    width: 200px;
+    height: 5px;
+    bottom: -10px;
+    left: 0;
 }
 
 .dropdown {
@@ -42,22 +56,24 @@ function selectContinent(continent) {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #ffffff;
+    background-color: var(--background-color);
     width: 100%;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
+    border-radius: 6px;
+    padding: 8px 0px;
+    margin-top: 5px;
 }
 
 .dropdown-content li {
-    color: black;
-    padding: 12px 16px;
+    color: var(--text-color);
+    padding: 8px 16px;
     text-decoration: none;
     display: block;
     white-space: nowrap;
+    font-weight: 600;
 }
 
 .dropdown-content li:hover {
-    background-color: #ddd;
     cursor: pointer;
 }
 
