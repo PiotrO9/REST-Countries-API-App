@@ -12,9 +12,11 @@ import SearchBar from './SearchBar.vue';
 
 <style scoped lang="css">
 .filters {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 40px;
+    max-width: 1920px;
 
     @media (min-width: 568px) {
         flex-direction: row;

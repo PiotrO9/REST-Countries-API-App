@@ -1,22 +1,13 @@
 <template>
     <div class="countries">
-        <Filters :countriesDatas="countriesDatas" />
+        <Filters />
+        <CountriesList />
     </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
 import Filters from './filters/Filters.vue';
-import { fetchAllCountries } from '../services/countriesService.ts';
-
-// TODO
-// Uzupelnic typy
-
-const countriesDatas = ref<any>(null);
-
-onMounted(() => {
-    countriesDatas.value = fetchAllCountries().then((res: any) => { console.log(res); return res });
-})
+import CountriesList from './CountriesList.vue';
 </script>
 
 <style scoped lang="css">
@@ -25,5 +16,8 @@ onMounted(() => {
     width: 100%;
     padding: 30px 20px;
     background-color: var(--second-background-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 </style>
