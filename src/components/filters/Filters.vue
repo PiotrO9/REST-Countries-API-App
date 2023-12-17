@@ -16,7 +16,7 @@ import SearchBar from './SearchBar.vue';
     display: flex;
     flex-direction: column;
     gap: 40px;
-    max-width: 1920px;
+    max-width: 1680px;
 
     @media (min-width: 568px) {
         flex-direction: row;

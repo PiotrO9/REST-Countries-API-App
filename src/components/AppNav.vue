@@ -39,7 +39,7 @@ const switchTheme = (): void => {
 <style scoped>
 .nav {
     display: flex;
-    padding: 10px;
+    padding: 10px 20px;
     justify-content: center;
     align-items: center;
     background-color: var(--background-color);
@@ -47,12 +47,17 @@ const switchTheme = (): void => {
     -webkit-box-shadow: 1px 42px 33px -26px var(--box-shadow-color);
     -moz-box-shadow: 1px 42px 33px -26px var(--box-shadow-color);
     box-shadow: 0px 22px 33px -10px var(--box-shadow-color);
+
+    @media (min-width: 768px) {
+        padding: 20px;
+    }
 }
 
 .nav-content {
     width: 100%;
-    max-width: 1920px;
+    max-width: 1680px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 

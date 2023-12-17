@@ -32,5 +32,10 @@ const { neighbour } = defineProps(['neighbour']);
     -moz-box-shadow: 0px 0px 25px -9px black;
     box-shadow: 0px 0px 25px -9px black;
     cursor: pointer;
+
+    @media (min-width: 1024px) {
+        padding: 6px 20px;
+        font-size: 18px;
+    }
 }
 </style>

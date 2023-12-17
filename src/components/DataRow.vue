@@ -58,14 +58,21 @@ const propValue = computed(() => {
     width: 100%;
     text-align: start;
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     margin-bottom: 4px;
     list-style-type: none;
+
+    @media (min-width: 1024px) {
+        font-size: 18px;
+    }
 }
 
 .data-row b {
     font-weight: 600;
     margin-right: 6px;
+
+    @media (min-width: 1024px) {
+        font-size: 20px;
+    }
 }
 </style>
