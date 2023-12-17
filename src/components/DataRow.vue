@@ -28,8 +28,6 @@ type genericObjectDataUnit = {
 const { data } = defineProps<dataRowProps>();
 
 const propValue = computed(() => {
-    console.log(data.propValue)
-
     if (typeof (data.propValue) == 'object') {
         if (data.propName == 'Currencies') {
             let currenciesArray: string[] = [];

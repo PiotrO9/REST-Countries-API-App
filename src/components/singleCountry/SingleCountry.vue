@@ -24,6 +24,13 @@
                         <SingleCountryDataSection :datas="leftSectionData" />
                         <SingleCountryDataSection :datas="rightSectionData" />
                     </div>
+                    <div class="neighbours-wrapper" v-if="neighbours">
+                        <span class="neighbours-heading">Border Countries: </span>
+                        <ul class="neighbours-list">
+                            <SingleCountryNeighbour v-for="(neighbour, index) in neighbours" :key="index"
+                                :neighbour="neighbour" />
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -35,13 +42,34 @@ import { onMounted, ref, computed } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { fetchSingleCountry } from '../../services/countriesService';
 import SingleCountryDataSection from './SingleCountryDataSection.vue';
-import type { dataRow } from '../../types/dataRow';
+import SingleCountryNeighbour from './SingleCountryNeighbour.vue';
 import type { countryData } from '../../types/countriesDatas';
+import type { neighbourCountryData } from '../../types/neighbourCountryData';
 
 const router = useRouter();
 const route = useRoute();
 const countryNameParam: string = route.params.name as string;
 const countryDatas = ref<countryData | null>(null);
+const neighbours = ref<neighbourCountryData[]>([]);
+
+onMounted(async () => {
+    try {
+        const primaryCountryData = await fetchSingleCountry(countryNameParam);
+        countryDatas.value = primaryCountryData;
+
+        if (countryDatas.value?.borders) {
+            for (const countryCode of countryDatas.value.borders) {
+                const borderCountryData: countryData = await fetchSingleCountry(countryCode);
+                neighbours.value?.push({
+                    countryCode: countryCode,
+                    countryName: borderCountryData.name.common
+                })
+            }
+        }
+    } catch (error) {
+        console.error('Error fetching country data:', error);
+    }
+})
 
 const leftSectionData = computed(() => [
     {
@@ -85,9 +113,6 @@ const backToCountriesList = (): void => {
     router.push({ path: '/' })
 }
 
-onMounted(async () => {
-    countryDatas.value = await fetchSingleCountry(countryNameParam).then((res: any) => { return res[0] });
-})
 
 </script>
 
@@ -95,7 +120,7 @@ onMounted(async () => {
 .singleCountry {
     padding: 20px;
     background-color: var(--second-background-color);
-    height: calc(100% - 60px);
+    height: max(calc(100% - 60px), max-content);
 }
 
 .singleCountry-content {
@@ -153,5 +178,24 @@ onMounted(async () => {
 .singleCountry-content .flag {
     margin: 40px 0px 30px 0px;
     aspect-ratio: 16/9;
+}
+
+.neighbours-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.neighbours-heading {
+    color: var(--text-color);
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.neighbours-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 </style>
