@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 const Countries = () => import('./src/components/Countries.vue');
-const SingleCountry = () => import('./src/components/SingleCounrtry.vue');
+const SingleCountry = () =>
+    import('./src/components/singleCountry/SingleCountry.vue');
 
 const routes = [
     { path: '/', component: Countries },

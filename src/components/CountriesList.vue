@@ -6,8 +6,8 @@
 
 <script setup lang="ts">
 import CountriesListItem from './CountriesListItem.vue';
-import { defineProps, onMounted, ref } from 'vue';
-import { fetchAllCountries } from '../services/countriesService.ts';
+import { onMounted, ref } from 'vue';
+import { fetchAllCountries } from '../services/countriesService';
 
 const countriesDatas = ref<any>(null);
 

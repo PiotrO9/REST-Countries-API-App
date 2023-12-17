@@ -1,5 +1,5 @@
 <template>
-    <li class="country">
+    <li class="country" @click="goToCountryDetails">
         <img :src="countryData.flags.png" class="flag" :alt="countryData.name.common + ' flag'">
         <div class="country-datas">
             <span class="heading-name">
@@ -23,11 +23,24 @@
 
 <script setup lang="ts">
 import { defineProps, computed } from 'vue';
+import { useRouter } from 'vue-router';
+import type { countryData } from '../types/countriesDatas'
 
-const { countryData } = defineProps(['countryData']);
+type countriesListItemProps = {
+    //TODO 
+    countryData: any;
+}
+
+const { countryData } = defineProps<countriesListItemProps>();
+const router = useRouter();
+
 const capital = computed(() => {
     return countryData.capital ? countryData.capital[0] : "No capital";
 });
+
+const goToCountryDetails = (): void => {
+    router.push({ path: `/${countryData.cca3}` })
+}
 </script>
 
 <style scoped lang="css">
@@ -38,6 +51,7 @@ const capital = computed(() => {
     flex-direction: column;
     background-color: var(--background-color);
     border-radius: 6px;
+    cursor: pointer;
 }
 
 .country-datas {
