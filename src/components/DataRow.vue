@@ -13,13 +13,42 @@ interface dataRowProps {
     data: dataRow,
 }
 
+interface CurrencyDetail {
+    name: string;
+}
+
+type CurrencyMap = {
+    [key: string]: CurrencyDetail;
+};
+
+type genericObjectDataUnit = {
+    [key: string]: string
+}
+
 const { data } = defineProps<dataRowProps>();
 
 const propValue = computed(() => {
     console.log(data.propValue)
 
-    if (typeof (data.propValue)) {
+    if (typeof (data.propValue) == 'object') {
+        if (data.propName == 'Currencies') {
+            let currenciesArray: string[] = [];
 
+            Object.values(data.propValue as CurrencyMap).forEach((currency: CurrencyDetail) => {
+                currenciesArray.push(currency.name);
+            });
+
+            return currenciesArray.join(', ');
+        }
+        else if (data.propName == 'Languages') {
+            let languagesArray: string[] = [];
+
+            Object.values(data.propValue as genericObjectDataUnit).forEach((language: string) => {
+                languagesArray.push(language)
+            })
+
+            return languagesArray.join(', ');
+        }
     }
 
     return data.propValue
