@@ -22,23 +22,23 @@ export const fetchFiltredCountries = async (
     region: string
 ): Promise<countryData[]> => {
     let result: countryData[] = [];
+
     if (name) {
         result = await axios
             .get(`https://restcountries.com/v3.1/name/${name}`)
             .then((res) => {
-                return res.data[0];
+                return res.data;
             });
     }
 
-    if (result && region) {
+    if (result.length && region) {
         result = result.filter((country) => country.region === region);
     } else if (region) {
         result = await axios
             .get(`https://restcountries.com/v3.1/region/${region}`)
             .then((res) => {
-                return res.data[0];
+                return res.data;
             });
     }
-
     return result;
 };

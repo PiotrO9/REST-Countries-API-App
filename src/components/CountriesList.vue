@@ -6,14 +6,11 @@
 
 <script setup lang="ts">
 import CountriesListItem from './CountriesListItem.vue';
-import { onMounted, ref } from 'vue';
-import { fetchAllCountries } from '../services/countriesService';
+import { computed } from 'vue';
+import { useCountriesStore } from '../stores/countriesStore';
 
-const countriesDatas = ref<any>(null);
-
-onMounted(async () => {
-    countriesDatas.value = await fetchAllCountries().then((res: any) => { return res });
-})
+const countriesStore = useCountriesStore();
+const countriesDatas = computed(() => countriesStore.getCountries);
 </script>
 
 <style scoped lang="css">

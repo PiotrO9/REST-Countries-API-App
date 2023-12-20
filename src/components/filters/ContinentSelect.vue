@@ -1,6 +1,6 @@
 <template>
     <div class="dropdown">
-        <button class="dropbtn">{{ selectedContinent || 'Filter by Region' }}</button>
+        <button class="dropbtn">{{ selectedContinent || defaultText }}</button>
         <ul class="dropdown-content">
             <li v-for="continent in continents" :key="continent" @click="selectContinent(continent)">
                 {{ continent }}
@@ -11,12 +11,24 @@
   
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useCountriesStore } from '../../stores/countriesStore';
+
+const defaultText = 'Filter by Region';
+const countriesStore = useCountriesStore();
 
 const continents: string[] = ["Africa", "America", "Asia", "Europe", "Oceania"];
 const selectedContinent = ref<string>('');
 
-function selectContinent(continent: string) {
-    selectedContinent.value = continent;
+function selectContinent(continent: string): void {
+    if (selectedContinent.value === continent) {
+        selectedContinent.value = ''
+        countriesStore.setRegion('');
+    } else {
+        countriesStore.setRegion(continent);
+        selectedContinent.value = continent;
+    }
+
+    countriesStore.getFiltredCountries()
 }
 </script>
   
