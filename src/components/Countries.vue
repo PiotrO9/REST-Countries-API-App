@@ -12,12 +12,12 @@ import CountriesList from './CountriesList.vue';
 
 <style scoped lang="css">
 .countries {
-    height: 100%;
     width: 100%;
-    padding: 30px 20px;
-    background-color: var(--second-background-color);
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 30px 20px;
+    background-color: var(--second-background-color);
 }
 </style>

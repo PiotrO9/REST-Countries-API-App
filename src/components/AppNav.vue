@@ -1,51 +1,44 @@
 <template>
     <nav class="nav">
         <div class="nav-content">
-            <span class="heading-text">
-                Where in the world?
-            </span>
-
+            <span class="heading-text">Where in the world?</span>
             <div class="theme-switcher" @click="switchTheme">
                 <div class="icon-container">
-                    <img v-if="isDark" src="../../public/assets/light-moon.svg" class="icon" alt="Moon icon">
-                    <img v-else src="../../public/assets/dark-moon.svg" class="icon" alt="Moon icon">
+                    <img :src="iconPath" class="icon" alt="Theme icon">
                 </div>
-                <div class="current-mode">
-                    {{ themeName }}
-                </div>
+                <div class="current-mode">{{ themeName }}</div>
             </div>
         </div>
     </nav>
 </template>
-
+  
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useThemeStore } from '../stores/themeStore';
 
 const themeStore = useThemeStore();
 
-const themeName = computed(() => {
-    return (themeStore.$state.isDark ? 'Dark' : 'Light') + " mode";
-})
+const themeName = computed(() =>
+    `${themeStore.$state.isDark ? 'Dark' : 'Light'} mode`
+);
 
-const isDark = computed(() => { return themeStore.$state.isDark })
+const iconPath = computed(() =>
+    `../../public/assets/${themeStore.$state.isDark ? 'light' : 'dark'}-moon.svg`
+);
 
-const switchTheme = (): void => {
+const switchTheme = () => {
     themeStore.toggleTheme();
-}
-
+};
 </script>
-
-<style scoped>
+  
+<style scoped lang="css">
 .nav {
     display: flex;
-    padding: 10px 20px;
     justify-content: center;
     align-items: center;
+    padding: 10px 20px;
     background-color: var(--background-color);
     color: var(--text-color);
-    -webkit-box-shadow: 1px 42px 33px -26px var(--box-shadow-color);
-    -moz-box-shadow: 1px 42px 33px -26px var(--box-shadow-color);
     box-shadow: 0px 22px 33px -10px var(--box-shadow-color);
 
     @media (min-width: 768px) {
@@ -53,12 +46,14 @@ const switchTheme = (): void => {
     }
 }
 
+
+
 .nav-content {
     width: 100%;
     max-width: 1680px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
 }
 
 .heading-text {
@@ -72,13 +67,15 @@ const switchTheme = (): void => {
 .theme-switcher {
     display: flex;
     justify-content: space-between;
-    align-content: center;
+    align-items: center;
     cursor: pointer;
 
     @media (min-width: 768px) {
         font-size: 18px;
     }
 }
+
+
 
 .icon-container {
     display: flex;
@@ -87,8 +84,8 @@ const switchTheme = (): void => {
 }
 
 .icon {
-    height: 30px;
     width: 30px;
+    height: 30px;
 }
 
 .current-mode {
@@ -98,3 +95,4 @@ const switchTheme = (): void => {
     text-align: center;
 }
 </style>
+  

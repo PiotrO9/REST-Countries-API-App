@@ -34,6 +34,9 @@ function selectContinent(continent: string): void {
   
 <style scoped>
 .dropbtn {
+    width: 152px;
+    max-width: 200px;
+    text-align: left;
     background-color: var(--background-color);
     color: var(--text-color);
     font-weight: 600;
@@ -41,10 +44,7 @@ function selectContinent(continent: string): void {
     border: none;
     outline: none;
     cursor: pointer;
-    width: 152px;
-    max-width: 200px;
-    text-align: left;
-    border-radius: 6px;
+    border-radius: var(--border-radius);
     border-bottom-right-radius: 6px;
     box-sizing: content-box;
 }
@@ -52,35 +52,35 @@ function selectContinent(continent: string): void {
 .dropbtn::after {
     content: '';
     position: absolute;
-    background-color: var(--second-background-color);
     width: 200px;
     height: 5px;
+    background-color: rgba(0, 0, 0, 0);
     bottom: -10px;
     left: 0;
 }
 
 .dropdown {
-    position: relative;
-    display: inline-block;
     width: 200px;
+    display: inline-block;
+    position: relative;
 }
 
 .dropdown-content {
+    width: 100%;
     display: none;
     position: absolute;
-    background-color: var(--background-color);
-    width: 100%;
-    z-index: 1;
-    border-radius: 6px;
     padding: 8px 0px;
     margin-top: 5px;
+    background-color: var(--background-color);
+    z-index: 1;
+    border-radius: var(--border-radius);
 }
 
 .dropdown-content li {
-    color: var(--text-color);
-    padding: 8px 16px;
-    text-decoration: none;
     display: block;
+    padding: 8px 16px;
+    color: var(--text-color);
+    text-decoration: none;
     white-space: nowrap;
     font-weight: 600;
 }

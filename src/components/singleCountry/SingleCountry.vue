@@ -118,10 +118,10 @@ const backToCountriesList = (): void => {
 
 <style scoped lang="css">
 .singleCountry {
+    height: 100%;
     padding: 20px;
     background-color: var(--second-background-color);
     min-height: max-content;
-    height: 100%;
 }
 
 .singleCountry-content {
@@ -133,50 +133,50 @@ const backToCountriesList = (): void => {
 
 .singleCountry-content .back-button-wrapper {
     width: 100%;
+    max-width: 1680px;
     display: flex;
     align-items: flex-start;
-    max-width: 1680px;
 }
 
 .singleCountry-content .back-button-wrapper .back-button {
-    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 12px;
+    padding: 8px 20px;
     outline: none;
     border: none;
-    padding: 8px 20px;
     background-color: var(--background-color);
     color: var(--text-color);
-    gap: 12px;
     border-radius: 4px;
+    cursor: pointer;
     -webkit-box-shadow: 0px 0px 25px -9px black;
     -moz-box-shadow: 0px 0px 25px -9px black;
     box-shadow: 0px 0px 25px -9px black;
 
     @media (min-width: 1024px) {
+        margin-top: 30px;
         padding: 10px 25px;
         font-size: 18px;
-        margin-top: 30px;
     }
 }
 
 .singleCountry-content .back-button-wrapper .back-button .icon {
-    fill: var(--text-color);
-    height: 20px;
     width: 20px;
+    height: 20px;
+    fill: var(--text-color);
 }
 
 .datas-wrapper {
+    width: 80%;
+    max-width: 1680px;
     display: flex;
     flex-direction: column;
-    max-width: 1680px;
-    width: 80%;
 
     @media (min-width: 768px) {
         width: 100%;
-        align-items: center;
         justify-content: center;
+        align-items: center;
         flex-direction: row;
         gap: 50px;
     }
@@ -208,9 +208,9 @@ const backToCountriesList = (): void => {
 }
 
 .datas-wrapper .right-section .heading {
+    margin-bottom: 20px;
     font-weight: 900;
     color: var(--text-color);
-    margin-bottom: 20px;
 
     @media (min-width: 1024px) {
         font-size: 36px;

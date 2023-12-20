@@ -27,8 +27,7 @@ import { useRouter } from 'vue-router';
 import type { countryData } from '../types/countriesDatas'
 
 type countriesListItemProps = {
-    //TODO 
-    countryData: any;
+    countryData: countryData;
 }
 
 const { countryData } = defineProps<countriesListItemProps>();
@@ -46,20 +45,20 @@ const goToCountryDetails = (): void => {
 <style scoped lang="css">
 .country {
     height: 100%;
-    list-style-type: none;
     display: flex;
     flex-direction: column;
     background-color: var(--background-color);
-    border-radius: 6px;
+    border-radius: var(--border-radius);
+    list-style-type: none;
     cursor: pointer;
 }
 
 .country-datas {
-    padding: 30px 20px 40px 20px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    padding: 30px 20px 40px 20px;
 }
 
 .heading-name {
@@ -72,16 +71,16 @@ const goToCountryDetails = (): void => {
 
 .data-row {
     width: 100%;
-    text-align: start;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     margin-bottom: 4px;
+    text-align: start;
 }
 
 .data-row b {
-    font-weight: 600;
     margin-right: 6px;
+    font-weight: 600;
 }
 
 .flag {

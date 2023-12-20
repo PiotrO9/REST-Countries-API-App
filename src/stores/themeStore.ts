@@ -18,11 +18,21 @@ export const useThemeStore = defineStore('theme', {
             );
         },
         initializeTheme(): void {
-            // TODO
-            // Add reading theme mode preference from system settings
+            const prefersDark = window.matchMedia(
+                '(prefers-color-scheme: dark)'
+            ).matches;
+            const savedTheme = localStorage.getItem('theme');
 
-            const currentTheme = this.isDark ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', currentTheme);
+            if (savedTheme) {
+                this.isDark = savedTheme === 'dark';
+            } else {
+                this.isDark = prefersDark;
+            }
+
+            document.documentElement.setAttribute(
+                'data-theme',
+                this.isDark ? 'dark' : 'light'
+            );
         },
     },
 });

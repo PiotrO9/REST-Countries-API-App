@@ -10,10 +10,8 @@
 
 <script setup lang="ts">
 import { defineProps } from 'vue';
-// import type { neighbourCountryData } from '../../types/neighbourCountryData';
 
 const { neighbour } = defineProps(['neighbour']);
-
 </script>
 
 <style scoped lang="css">

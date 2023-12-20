@@ -25,7 +25,7 @@ watch(query, () => {
 .search-bar {
     display: flex;
     background-color: var(--background-color);
-    border-radius: 6px;
+    border-radius: var(--border-radius);
     padding: 15px 20px 15px 40px;
     gap: 20px;
 }

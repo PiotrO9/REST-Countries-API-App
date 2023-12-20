@@ -56,10 +56,10 @@ const propValue = computed(() => {
 <style scoped lang="css">
 .data-row {
     width: 100%;
-    text-align: start;
     display: flex;
     align-items: center;
     margin-bottom: 4px;
+    text-align: start;
     list-style-type: none;
 
     @media (min-width: 1024px) {
